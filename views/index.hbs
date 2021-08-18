@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+</head>
+<body>
+    <center><h1 style="color: lightcoral;">Morto Toys Shop</h1></center>
+    <div style="margin-right: 80%">
+        <h4>Insert Morto</h4>
+            <form action="/insert" method="post">
+                Product <input type="text" name = "txtProduct">
+                <br>
+                Price <input type="text" name = "txtPrice">
+                <br>
+                Image <input type="text" name="txtImage">
+                <br><br>
+                <input type="submit" value="Insert Morto">
+            </form>
+    </div>
+    <div style="margin-left: 72%;">
+        <form action="/search" method="post">
+            Product  <input type="text" name = "txtSearch">
+            <input type="submit" value="Search Product">
+        </form>
+    </div>
+    <center>
+        <table border="3" style="margin-top: 30px;">
+            <tr style="background-color: rgb(115, 230, 159);">
+                <th>Product</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+            {{#each data}}
+            <tr>
+                <td><li style="list-style: none;">{{product}}</li></td>
+                <td><li style="list-style: none;">{{price}}</li></td>
+                <td><li style="list-style: none;">
+                    <img style="padding: 15px;" src="{{image}}" width="110" height="100"></li>
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+    </center>
+</body>
+</html>
