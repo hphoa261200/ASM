@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const session = require('express-session')
-const url = "mongodb://localhost:27017";
+const url = "mongodb+srv://hoanghoa:hoanghoa2612@cluster1.2mgjt.mongodb.net/test";
 
 const {MongoClient} = require("mongodb");
 
