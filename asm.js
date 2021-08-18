@@ -1,19 +1,19 @@
 const express = require('express');
 const app = express();
-const session = require('express-session')
+// const session = require('express-session')
 const url = "mongodb://localhost:27017";
 
-const {ObjectId, MongoClient} = require("mongodb");
+const {MongoClient} = require("mongodb");
 
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({extended:true}))
 
-app.use(session({
-    resave: true,
-    saveUninitialized: true,
-    secret: 'secret',
-    cookie:{maxAge: 60000}
-}));
+// app.use(session({
+//     resave: true,
+//     saveUninitialized: true,
+//     secret: 'secret',
+//     cookie:{maxAge: 60000}
+// }));
 
 // app.get('/login', (req,res)=>{
 //     res.render('login')
