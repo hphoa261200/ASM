@@ -64,6 +64,6 @@ app.post('/search', async(req,res)=>{
     res.render('index',{data:result})
 }) 
 
-const PORT = process.env. PORT || 5001;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT);
 console.log("app is running: " , PORT);
