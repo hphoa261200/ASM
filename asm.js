@@ -15,27 +15,27 @@ app.use(session({
     cookie:{maxAge: 60000}
 }));
 
-app.get('/login', (req,res)=>{
-    res.render('login')
-})
+// app.get('/login', (req,res)=>{
+//     res.render('login')
+// })
 
-app.post('/doLogin',(req,res)=>{
-    const name = req.body.txtName;
-    const pass = req.body.txtPassword;
-    // valid user: tom; 123
-    if((name == "hoa") && (pass == "123")){
-        req.session["User"] ={
-            name: "hoa",
-            role: "admin"
-        } 
-    }
-    res.redirect('/');
-})
+// app.post('/doLogin',(req,res)=>{
+//     const name = req.body.txtName;
+//     const pass = req.body.txtPassword;
+//     // valid user: tom; 123
+//     if((name == "hoa") && (pass == "123")){
+//         req.session["User"] ={
+//             name: "hoa",
+//             role: "admin"
+//         } 
+//     }
+//     res.redirect('/');
+// })
 
 app.get('/', async (req,res)=>{
-    if(req.session["User"]== null){
-        res.redirect('/login')
-    }
+    // if(req.session["User"]== null){
+    //     res.redirect('/login')
+    // }
     const client = await MongoClient.connect(url);
     const dbo = client.db("GCH0805");
     const allMorto = await dbo.collection("morto").find({}).toArray();
