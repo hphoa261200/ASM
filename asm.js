@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const session = require('express-session')
-const url = "mongodb+srv://hoanghoa:<password>@cluster2.5dlx6.mongodb.net/test";
+const url = "mongodb+srv://hoanghoa:hoanghoa2612@cluster1.2mgjt.mongodb.net/test";
 
 const {MongoClient} = require("mongodb");
 
@@ -37,7 +37,7 @@ app.get('/', async (req,res)=>{
         res.redirect('/login')
     }
     const client = await MongoClient.connect(url);
-    const dbo = client.db("MortoDB");
+    const dbo = client.db("GCH0805");
     const allMorto = await dbo.collection("morto").find({}).toArray();
     res.render("index", {data: allMorto});
 })
@@ -49,7 +49,7 @@ app.post('/insert', async (req,res)=>{
     const allToys = {product: productInput, price: priceInput, image: imageInput};
 
     const client = await MongoClient.connect(url);
-    const dbo = client.db("MortoDB");
+    const dbo = client.db("GCH0805");
     const allMorto = await dbo.collection("morto").insertOne(allToys);
     res.redirect("/");
 })
@@ -58,7 +58,7 @@ app.post('/search', async(req,res)=>{
     const searchProduct = req.body.txtSearch;
 
     const client = await MongoClient.connect(url);
-    const dbo = client.db("MortoDB");
+    const dbo = client.db("GCH0805");
     const result = await dbo.collection("morto").find({product:searchProduct}).toArray();
 
     res.render('index',{data:result})
