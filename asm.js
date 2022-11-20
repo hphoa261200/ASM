@@ -1,8 +1,8 @@
+const { text } = require('express');
 const express = require('express');
 const app = express();
 const session = require('express-session')
 const url = "mongodb+srv://hoanghoa:hoanghoa2612@cluster1.2mgjt.mongodb.net/test";
-
 const {MongoClient} = require("mongodb");
 
 app.set('view engine', 'hbs')
@@ -12,7 +12,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     secret: 'secret',
-    cookie:{maxAge: 60000}
+    cookie:{maxAge: 600000}
 }));
 
 app.get('/login', (req,res)=>{
@@ -46,7 +46,8 @@ app.post('/insert', async (req,res)=>{
     const productInput = req.body.txtProduct;
     const priceInput = req.body.txtPrice;
     const imageInput = req.body.txtImage;
-    const allToys = {product: productInput, price: priceInput, image: imageInput};
+    const date = new Date ();
+    const allToys = {product: productInput, price: priceInput, image: imageInput, date: date};
 
     const client = await MongoClient.connect(url);
     const dbo = client.db("GCH0805");
@@ -61,7 +62,7 @@ app.post('/search', async(req,res)=>{
     const dbo = client.db("GCH0805");
     const result = await dbo.collection("morto").find({product:searchProduct}).toArray();
 
-    res.render('index',{data:result})
+    res.render('index',{data: result})
 }) 
 
 const PORT = process.env.PORT || 5001;

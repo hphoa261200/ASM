@@ -14,6 +14,8 @@
                 Product <input type="text" name = "txtProduct">
                 <br>
                 Price <input type="text" name = "txtPrice">
+                {{me}}
+                {{mev}}
                 <br>
                 Image <input type="text" name="txtImage">
                 <br><br>
@@ -33,6 +35,7 @@
                 <th>Product</th>
                 <th>Price</th>
                 <th>Image</th>
+                <th>Date</th>
             </tr>
             {{#each data}}
             <tr>
@@ -41,6 +44,7 @@
                 <td><li style="list-style: none;">
                     <img style="padding: 15px;" src="{{image}}" width="110" height="100"></li>
                 </td>
+                <td><li style="list-style: none;">{{date}}</li></td>
             </tr>
             {{/each}}
         </table>
